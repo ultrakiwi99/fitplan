@@ -2,7 +2,7 @@
 
 exports[`TrainingView renders 1`] = `
 <div>
-  Training
+  Training A
   <exerciseview-stub name="test exercise"></exerciseview-stub>
   <exerciseview-stub name="test exercise 1"></exerciseview-stub>
 </div>

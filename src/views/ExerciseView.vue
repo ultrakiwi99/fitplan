@@ -10,8 +10,7 @@ export default {
     name: "ExerciseView",
     props: {
         name: {
-            type: String,
-            required: true
+            type: String
         }
     }
 };
