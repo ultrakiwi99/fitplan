@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TrainingView renders 1`] = `
+<div>
+  Training
+  <exerciseview-stub name="test exercise"></exerciseview-stub>
+  <exerciseview-stub name="test exercise 1"></exerciseview-stub>
+</div>
+`;
