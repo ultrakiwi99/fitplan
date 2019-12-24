@@ -13,12 +13,7 @@ module.exports = {
     parser: "babel-eslint"
   },
   plugins: ["vue"],
-  extends: [
-    "eslint:recommended",
-    "plugin:vue-recommended",
-    "prettier",
-    "prettier/vue"
-  ],
+  extends: ["eslint:recommended", "prettier", "prettier/vue"],
   overrides: [
     {
       files: [
