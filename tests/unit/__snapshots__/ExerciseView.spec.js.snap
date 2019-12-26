@@ -2,6 +2,6 @@
 
 exports[`ExerciseView renders 1`] = `
 <div>
-
+  <h2 class="exercise-name">Test Exercise</h2>
 </div>
 `;

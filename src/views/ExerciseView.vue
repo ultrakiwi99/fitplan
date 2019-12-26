@@ -1,6 +1,6 @@
 <template>
     <div>
-        {{ name }}
+        <h2 class="exercise-name">{{ name }}</h2>
         <slot></slot>
     </div>
 </template>

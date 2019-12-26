@@ -1,6 +1,6 @@
 <template>
     <div>
-        {{ training.name }}
+        <h1 class="training-name">{{ training.name }}</h1>
         <ExerciseView
             v-for="(exercise, idx) in training.exercises"
             :key="idx"
