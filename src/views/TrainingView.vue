@@ -68,7 +68,12 @@ export default {
   },
   methods: {
     updateReps(reps, setIdx, exIdx) {
-      this.training.exercises[exIdx].sets[setIdx].reps = reps;
+      const maxReps = this.training.exercises[exIdx].maxReps;
+      if (reps > maxReps) {
+        this.training.exercises[exIdx].sets[setIdx].reps = 0;
+      } else {
+        this.training.exercises[exIdx].sets[setIdx].reps = reps;
+      }
     }
   }
 };
