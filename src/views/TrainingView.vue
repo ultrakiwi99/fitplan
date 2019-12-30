@@ -5,7 +5,7 @@
       v-for="(ex, idx) in training.exes"
       :key="idx"
       :ex="ex"
-      :exIdx="idx"
+      :ex-idx="idx"
       @updateEx="updateTraining"
     />
   </div>
@@ -61,7 +61,6 @@ export default {
   },
   methods: {
     updateTraining(exIdx, setIdx, reps) {
-      console.log(exIdx, setIdx, reps);
       const maxReps = this.training.exes[exIdx].maxReps;
       if (reps > maxReps) {
         this.training.exes[exIdx].sets[setIdx].reps = 0;

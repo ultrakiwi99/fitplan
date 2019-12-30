@@ -10,12 +10,16 @@ export default {
   props: {
     maxReps: Number,
     set: Object,
-    exIdx: Number,
     setIdx: Number
   },
   methods: {
     updateReps() {
-      this.$emit("updateReps", this.setIdx, this.set.reps + 1);
+      const newRepCount = this.set.reps + 1;
+      if (newRepCount > this.maxReps) {
+        this.$emit("updateReps", this.setIdx, 0);
+      } else {
+        this.$emit("updateReps", this.setIdx, this.set.reps + 1);
+      }
     }
   }
 };

@@ -8,6 +8,7 @@ describe("SetView", () => {
             set: {
                 reps: 0
             },
+            maxReps: 2,
             setIdx: 0
         }
     });
@@ -31,5 +32,28 @@ describe("SetView", () => {
         // assert
         expect(wrapper.emitted()["updateReps"][0][0]).toBe(0);
         expect(wrapper.emitted()["updateReps"][0][1]).toBe(1);
+    });
+});
+
+describe("SetView with max reps", () => {
+    const wrapper = shallowMount(SetView, {
+        propsData: {
+            set: {
+                reps: 2
+            },
+            maxReps: 2,
+            setIdx: 0
+        }
+    });
+    it("sends zero if reps are more than maxReps", () => {
+        // assign
+        const button = wrapper.find(".set-button");
+
+        // action
+        button.trigger("click");
+
+        // assert
+        expect(wrapper.emitted()["updateReps"][0][0]).toBe(0);
+        expect(wrapper.emitted()["updateReps"][0][1]).toBe(0);
     });
 });

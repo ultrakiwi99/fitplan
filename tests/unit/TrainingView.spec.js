@@ -53,15 +53,4 @@ describe("TrainingView", () => {
         // assert
         expect(exeriseViews.length).toBe(2);
     });
-
-    it("updates reps in exerises", () => {
-        // assign
-        const exeriseView = wrapper.find(ExerciseView);
-
-        // action
-        exeriseView.trigger("updateEx", [[0, 0, 1]]);
-
-        // assert
-        expect(wrapper.vm.training.exes[0].sets[0].reps).toBe(1);
-    });
 });

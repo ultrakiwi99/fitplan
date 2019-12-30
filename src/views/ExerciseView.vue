@@ -6,7 +6,7 @@
       :set="set"
       :max-reps="ex.maxReps"
       :key="idx"
-      :setIdx="idx"
+      :set-idx="idx"
       @updateReps="updateEx"
     />
   </div>
