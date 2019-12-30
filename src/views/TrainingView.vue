@@ -18,46 +18,8 @@ import SetView from "./SetView";
 export default {
   name: "TrainingView",
   components: { ExerciseView, SetView },
-  data() {
-    return {
-      training: {
-        name: "Training A",
-        exes: [
-          {
-            name: "test exercise",
-            maxSets: 3,
-            maxReps: 15,
-            sets: [
-              {
-                reps: 0
-              },
-              {
-                reps: 0
-              },
-              {
-                reps: 0
-              }
-            ]
-          },
-          {
-            name: "test exercise 1",
-            maxSets: 3,
-            maxReps: 15,
-            sets: [
-              {
-                reps: 0
-              },
-              {
-                reps: 0
-              },
-              {
-                reps: 0
-              }
-            ]
-          }
-        ]
-      }
-    };
+  props: {
+    training: Object
   },
   methods: {
     updateTraining(exIdx, setIdx, reps) {
