@@ -8,18 +8,14 @@
 export default {
   name: "SetView",
   props: {
-    exerciseIndex: Number,
-    setIndex: Number,
-    set: Object
+    maxReps: Number,
+    set: Object,
+    exIdx: Number,
+    setIdx: Number
   },
   methods: {
     updateReps() {
-      this.$emit(
-        "updateReps",
-        this.set.reps + 1,
-        this.setIndex,
-        this.exerciseIndex
-      );
+      this.$emit("updateReps", this.setIdx, this.set.reps + 1);
     }
   }
 };

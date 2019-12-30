@@ -2,19 +2,12 @@
   <div>
     <h1 class="training-name">{{ training.name }}</h1>
     <ExerciseView
-      v-for="(exercise, exIdx) in training.exercises"
-      :key="exIdx"
-      :name="exercise.name"
-    >
-      <SetView
-        v-for="(set, setIdx) in exercise.sets"
-        :key="setIdx"
-        :set="set"
-        :exercise-index="exIdx"
-        :set-index="setIdx"
-        @updateReps="updateReps"
-      />
-    </ExerciseView>
+      v-for="(ex, idx) in training.exes"
+      :key="idx"
+      :ex="ex"
+      :exIdx="idx"
+      @updateEx="updateTraining"
+    />
   </div>
 </template>
 
@@ -29,7 +22,7 @@ export default {
     return {
       training: {
         name: "Training A",
-        exercises: [
+        exes: [
           {
             name: "test exercise",
             maxSets: 3,
@@ -67,12 +60,13 @@ export default {
     };
   },
   methods: {
-    updateReps(reps, setIdx, exIdx) {
-      const maxReps = this.training.exercises[exIdx].maxReps;
+    updateTraining(exIdx, setIdx, reps) {
+      console.log(exIdx, setIdx, reps);
+      const maxReps = this.training.exes[exIdx].maxReps;
       if (reps > maxReps) {
-        this.training.exercises[exIdx].sets[setIdx].reps = 0;
+        this.training.exes[exIdx].sets[setIdx].reps = 0;
       } else {
-        this.training.exercises[exIdx].sets[setIdx].reps = reps;
+        this.training.exes[exIdx].sets[setIdx].reps = reps;
       }
     }
   }

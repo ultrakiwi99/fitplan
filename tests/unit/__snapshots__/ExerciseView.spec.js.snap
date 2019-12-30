@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ExerciseView renders 1`] = `
-<div>
+<div idx="0">
   <h2 class="exercise-name">Test Exercise</h2>
+  <setview-stub maxreps="2" set="[object Object]" setidx="0"></setview-stub>
+  <setview-stub maxreps="2" set="[object Object]" setidx="1"></setview-stub>
 </div>
 `;

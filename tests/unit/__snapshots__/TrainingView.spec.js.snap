@@ -3,8 +3,7 @@
 exports[`TrainingView renders 1`] = `
 <div>
   <h1 class="training-name">Training A</h1>
-  <exerciseview-stub></exerciseview-stub>
-  <exerciseview-stub></exerciseview-stub>
-  <exerciseview-stub></exerciseview-stub>
+  <exerciseview-stub ex="[object Object]" exidx="0"></exerciseview-stub>
+  <exerciseview-stub ex="[object Object]" exidx="1"></exerciseview-stub>
 </div>
 `;
