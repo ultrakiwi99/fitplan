@@ -65,6 +65,20 @@ describe("Trainings class", () => {
                             reps: 5
                         }
                     ]
+                },
+                {
+                    name: "Bench",
+                    maxReps: 5,
+                    weight: 20,
+                    weightProg: 1.25,
+                    sets: [
+                        {
+                            reps: 5
+                        },
+                        {
+                            reps: 3
+                        }
+                    ]
                 }
             ]
         });
@@ -76,6 +90,20 @@ describe("Trainings class", () => {
             name: "Squat",
             maxReps: 5,
             weight: 31.25,
+            weightProg: 1.25,
+            sets: [
+                {
+                    reps: 0
+                },
+                {
+                    reps: 0
+                }
+            ]
+        });
+        expect(training.exersises[1]).toMatchObject({
+            name: "Bench",
+            maxReps: 5,
+            weight: 20,
             weightProg: 1.25,
             sets: [
                 {
