@@ -4,36 +4,37 @@ import ExerciseView from "../../src/views/ExerciseView.vue";
 
 describe("TrainingView", () => {
     // prepare
-    const wrapper = shallowMount(TrainingView);
-    wrapper.setData({
-        training: {
-            name: "Training A",
-            exes: [
-                {
-                    name: "exercise 1",
-                    maxReps: 2,
-                    sets: [
-                        {
-                            reps: 0
-                        },
-                        {
-                            reps: 0
-                        }
-                    ]
-                },
-                {
-                    name: "exercise 2",
-                    maxReps: 2,
-                    sets: [
-                        {
-                            reps: 0
-                        },
-                        {
-                            reps: 0
-                        }
-                    ]
-                }
-            ]
+    const wrapper = shallowMount(TrainingView, {
+        propsData: {
+            training: {
+                name: "Training A",
+                exes: [
+                    {
+                        name: "exercise 1",
+                        maxReps: 2,
+                        sets: [
+                            {
+                                reps: 0
+                            },
+                            {
+                                reps: 0
+                            }
+                        ]
+                    },
+                    {
+                        name: "exercise 2",
+                        maxReps: 2,
+                        sets: [
+                            {
+                                reps: 0
+                            },
+                            {
+                                reps: 0
+                            }
+                        ]
+                    }
+                ]
+            }
         }
     });
 
