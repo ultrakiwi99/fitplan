@@ -1,15 +1,9 @@
 <template>
-  <div id="app">
-    <TrainigWrapper />
-  </div>
+  <div id="app"></div>
 </template>
 
 <script>
-import TrainigWrapper from "./components/TrainingWrapper";
-
-export default {
-  components: { TrainigWrapper }
-};
+export default {};
 </script>
 
 <style lang="scss">
