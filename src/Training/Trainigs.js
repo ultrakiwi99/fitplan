@@ -1,7 +1,14 @@
 /* eslint-disable no-undef */
 export default class Trainig {
-    isInLocalStorage() {
-        return !!localStorage.getItem("fit-app-trainings");
+    inStorage() {
+        if (!localStorage.getItem("fit-app")) {
+            return false;
+        }
+        const trainings = JSON.parse(localStorage.getItem("fit-app"));
+        if (!trainings.saved || trainings.saved.length === 0) {
+            return false;
+        }
+        return true;
     }
     fromLocalStorage() {
         const trainings = JSON.parse(localStorage.getItem("fit-app-trainings"));
