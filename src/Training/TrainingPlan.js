@@ -19,19 +19,22 @@ export default class TrainingPlan {
         this.savePlan(saved);
     }
     nextTraining() {
+        let next;
         const saved = this.getPlan();
         const trainLen = saved.trainings.length;
         const savedLen = saved.saved.length;
-        if (savedLen === 0) {
-            return saved.trainings.shift();
+        const clone = obj => JSON.parse(JSON.stringify(obj));
+        switch (true) {
+            case savedLen === 0 || savedLen === trainLen:
+                next = clone(saved.trainings.shift());
+                break;
+            case savedLen > trainLen:
+                next = clone(saved.saved[savedLen - trainLen]);
+                break;
+            default:
+                next = clone(saved.trainings[trainLen - savedLen]);
         }
-        if (savedLen > trainLen) {
-            return saved.saved[savedLen - trainLen];
-        } else if (savedLen === trainLen) {
-            return saved.trainings.shift();
-        } else {
-            return saved.trainings[trainLen - savedLen];
-        }
+        return next;
     }
     clearSaved() {
         const saved = this.getPlan();

@@ -3,16 +3,39 @@ import TrainingPlan from "../../src/Training/TrainingPlan";
 
 global.localStorage = new LocalStorageMock();
 
+const trainingA = {
+    name: "Training A",
+    order: 0,
+    exersises: [
+        {
+            name: "exersise 1",
+            maxReps: 5,
+            weight: 10,
+            weightProgression: 1.25,
+            sets: [{ reps: 0 }]
+        }
+    ]
+};
+const trainingB = {
+    name: "Training B",
+    order: 1,
+    exersises: [
+        {
+            name: "exersise 1",
+            maxReps: 5,
+            weight: 10,
+            weightProgression: 1.25,
+            sets: [{ reps: 0 }]
+        }
+    ]
+};
+
 describe("TrainingPlan", () => {
     const plan = new TrainingPlan();
 
     it("Adds training to training plan", () => {
-        plan.addToPlan({
-            name: "Training A"
-        });
-        plan.addToPlan({
-            name: "Training B"
-        });
+        plan.addToPlan(trainingA);
+        plan.addToPlan(trainingB);
 
         const saved = JSON.parse(global.localStorage.getItem("fit-app"));
 
@@ -23,9 +46,7 @@ describe("TrainingPlan", () => {
     });
 
     it("Saves training to saved trainings list", () => {
-        plan.addToPlan({
-            name: "Training A"
-        });
+        plan.addToPlan(trainingA);
 
         let saved = JSON.parse(global.localStorage.getItem("fit-app"));
         expect(saved["trainings"][0]["name"]).toBe("Training A");
@@ -39,10 +60,9 @@ describe("TrainingPlan", () => {
     });
 
     it("Saves training to saved training list", () => {
-        plan.saveTraining({
-            name: "Training A",
-            exersises: [{ name: "exersise 1", sets: [{ reps: 5 }] }]
-        });
+        const withReps = JSON.parse(JSON.stringify(trainingA));
+        withReps.exersises[0].sets[0].reps = 5;
+        plan.saveTraining(withReps);
 
         let saved = JSON.parse(global.localStorage.getItem("fit-app"));
 
@@ -53,14 +73,8 @@ describe("TrainingPlan", () => {
     });
 
     it("Clears all saved trainings", () => {
-        plan.saveTraining({
-            name: "Training A",
-            exersises: [{ name: "exersise 1", sets: [{ reps: 5 }] }]
-        });
-        plan.saveTraining({
-            name: "Training B",
-            exersises: [{ name: "exersise 2", sets: [{ reps: 5 }] }]
-        });
+        plan.saveTraining(trainingA);
+        plan.saveTraining(trainingB);
 
         plan.clearSaved();
 
@@ -72,21 +86,11 @@ describe("TrainingPlan", () => {
     });
 
     it("Returns default training if no trainings are saved", () => {
-        plan.addToPlan({
-            name: "Training A",
-            exersises: [
-                {
-                    name: "exersise 1",
-                    maxReps: 5,
-                    weight: 10,
-                    weightProgression: 1.25,
-                    sets: [{ reps: 0 }]
-                }
-            ]
-        });
+        plan.addToPlan(trainingA);
 
         expect(plan.nextTraining()).toStrictEqual({
             name: "Training A",
+            order: 0,
             exersises: [
                 {
                     name: "exersise 1",
@@ -101,32 +105,8 @@ describe("TrainingPlan", () => {
     });
 
     it("Returns first training by order, if no saved training exist", () => {
-        plan.addToPlan({
-            name: "Training A",
-            order: 0,
-            exersises: [
-                {
-                    name: "exersise 1",
-                    maxReps: 5,
-                    weight: 10,
-                    weightProgression: 1.25,
-                    sets: [{ reps: 0 }]
-                }
-            ]
-        });
-        plan.addToPlan({
-            name: "Training B",
-            order: 1,
-            exersises: [
-                {
-                    name: "exersise 1",
-                    maxReps: 5,
-                    weight: 10,
-                    weightProgression: 1.25,
-                    sets: [{ reps: 0 }]
-                }
-            ]
-        });
+        plan.addToPlan(trainingA);
+        plan.addToPlan(trainingB);
 
         expect(plan.nextTraining()).toStrictEqual({
             name: "Training A",
@@ -146,38 +126,23 @@ describe("TrainingPlan", () => {
     });
 
     it("Returns trainig next by order training with ajusted weight", () => {
-        plan.addToPlan({
-            name: "Training A"
-        });
-        plan.addToPlan({
-            name: "Training B"
-        });
+        let nextTraining;
 
-        plan.saveTraining({
-            name: "Training A"
-        });
-        plan.saveTraining({
-            name: "Training B"
-        });
+        plan.addToPlan(trainingA);
+        plan.addToPlan(trainingB);
 
-        expect(plan.nextTraining()).toStrictEqual({
-            name: "Training A"
-        });
+        plan.saveTraining(trainingA);
+        plan.saveTraining(trainingB);
 
-        plan.saveTraining({
-            name: "Training A"
-        });
+        nextTraining = plan.nextTraining();
+        expect(nextTraining.name).toBe("Training A");
 
-        expect(plan.nextTraining()).toStrictEqual({
-            name: "Training B"
-        });
+        plan.saveTraining(trainingA);
+        nextTraining = plan.nextTraining();
+        expect(nextTraining.name).toBe("Training B");
 
-        plan.saveTraining({
-            name: "Training B"
-        });
-
-        expect(plan.nextTraining()).toStrictEqual({
-            name: "Training A"
-        });
+        plan.saveTraining(trainingB);
+        nextTraining = plan.nextTraining();
+        expect(nextTraining.name).toBe("Training A");
     });
 });
