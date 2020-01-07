@@ -141,5 +141,43 @@ describe("TrainingPlan", () => {
                 }
             ]
         });
+
+        global.localStorage.clear();
+    });
+
+    it("Returns trainig next by order training with ajusted weight", () => {
+        plan.addToPlan({
+            name: "Training A"
+        });
+        plan.addToPlan({
+            name: "Training B"
+        });
+
+        plan.saveTraining({
+            name: "Training A"
+        });
+        plan.saveTraining({
+            name: "Training B"
+        });
+
+        expect(plan.nextTraining()).toStrictEqual({
+            name: "Training A"
+        });
+
+        plan.saveTraining({
+            name: "Training A"
+        });
+
+        expect(plan.nextTraining()).toStrictEqual({
+            name: "Training B"
+        });
+
+        plan.saveTraining({
+            name: "Training B"
+        });
+
+        expect(plan.nextTraining()).toStrictEqual({
+            name: "Training A"
+        });
     });
 });

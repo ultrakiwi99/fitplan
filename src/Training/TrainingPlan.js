@@ -20,14 +20,17 @@ export default class TrainingPlan {
     }
     nextTraining() {
         const saved = this.getPlan();
-        if (saved.saved.length === 0) {
-            console.log(saved);
-            if (saved.trainings.length > 1) {
-                return saved.trainings
-                    .sort((tr1, tr2) => tr1.order < tr2.order)
-                    .pop();
-            }
-            return saved.trainings.pop();
+        const trainLen = saved.trainings.length;
+        const savedLen = saved.saved.length;
+        if (savedLen === 0) {
+            return saved.trainings.shift();
+        }
+        if (savedLen > trainLen) {
+            return saved.saved[savedLen - trainLen];
+        } else if (savedLen === trainLen) {
+            return saved.trainings.shift();
+        } else {
+            return saved.trainings[trainLen - savedLen];
         }
     }
     clearSaved() {
