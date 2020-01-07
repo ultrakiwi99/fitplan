@@ -125,7 +125,7 @@ describe("TrainingPlan", () => {
         global.localStorage.clear();
     });
 
-    it("Returns trainig next by order training with ajusted weight", () => {
+    it("Returns trainig next by order with ajusted weight", () => {
         plan.addToPlan(trainingA);
         plan.addToPlan(trainingB);
 
@@ -162,5 +162,7 @@ describe("TrainingPlan", () => {
 
         const nextB = plan.nextTraining();
         expect(nextB.name).toBe("Training B");
+
+        global.localStorage.clear();
     });
 });
