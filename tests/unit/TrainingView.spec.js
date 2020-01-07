@@ -8,7 +8,7 @@ describe("TrainingView", () => {
         propsData: {
             training: {
                 name: "Training A",
-                exes: [
+                exersises: [
                     {
                         name: "exercise 1",
                         maxReps: 2,
