@@ -28,7 +28,6 @@ export default class TrainingPlan {
         const trainLen = saved.trainings.length;
         const savedLen = saved.saved.length;
         const clone = obj => JSON.parse(JSON.stringify(obj));
-        console.log(saved);
         switch (true) {
             case savedLen === 0 || savedLen === trainLen:
                 next = clone(saved.trainings.shift());
@@ -60,32 +59,6 @@ export default class TrainingPlan {
                 trainings: [],
                 saved: []
             };
-            plan.trainings.push({
-                name: "Training A",
-                order: 0,
-                exersises: [
-                    {
-                        name: "exersise 1",
-                        maxReps: 5,
-                        weight: 10,
-                        weightProgression: 1.25,
-                        sets: [{ reps: 0 }]
-                    }
-                ]
-            });
-            plan.trainings.push({
-                name: "Training B",
-                order: 0,
-                exersises: [
-                    {
-                        name: "exersise 1",
-                        maxReps: 5,
-                        weight: 10,
-                        weightProgression: 1.25,
-                        sets: [{ reps: 0 }]
-                    }
-                ]
-            });
         } else {
             plan = JSON.parse(plan);
         }
