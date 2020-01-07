@@ -127,9 +127,9 @@ describe("TrainingPlan", () => {
 
     it("Returns trainig next by order with ajusted weight", () => {
         plan.addToPlan(trainingA);
-        plan.addToPlan(trainingB);
-
         plan.saveTraining(trainingA);
+
+        plan.addToPlan(trainingB);
         plan.saveTraining(trainingB);
 
         const enoughRepsA = plan.nextTraining();

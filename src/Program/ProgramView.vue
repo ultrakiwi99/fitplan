@@ -3,7 +3,10 @@
         <button class="start-button" v-if="training === null" @click="next">
             Start
         </button>
-        <TrainingView v-else :training="training" />
+        <div v-else>
+            <TrainingView :training="training" />
+            <button class="save-button" @click="save">Finish</button>
+        </div>
     </div>
 </template>
 
@@ -23,7 +26,7 @@ export default {
                 order: 0,
                 exersises: [
                     {
-                        name: "exersise 1",
+                        name: "Bench",
                         maxReps: 5,
                         weight: 10,
                         weightProgression: 1.25,
@@ -33,10 +36,10 @@ export default {
             });
             plan.addToPlan({
                 name: "Training B",
-                order: 0,
+                order: 1,
                 exersises: [
                     {
-                        name: "exersise 1",
+                        name: "Squat",
                         maxReps: 5,
                         weight: 10,
                         weightProgression: 1.25,
@@ -54,6 +57,10 @@ export default {
     methods: {
         next() {
             this.training = plan.nextTraining();
+        },
+        save() {
+            plan.saveTraining(this.training);
+            this.training = null;
         }
     }
 };
