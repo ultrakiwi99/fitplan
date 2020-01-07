@@ -13,6 +13,7 @@
 <script>
 import TrainingView from "../views/TrainingView";
 import TrainingPlan from "../Training/TrainingPlan";
+import { trainingA, trainingB } from "../Program/Default/DefaultPlan";
 
 const plan = new TrainingPlan();
 
@@ -21,32 +22,8 @@ export default {
     components: { TrainingView },
     created() {
         if (plan.getPlan().trainings.length === 0) {
-            plan.addToPlan({
-                name: "Training A",
-                order: 0,
-                exersises: [
-                    {
-                        name: "Bench",
-                        maxReps: 5,
-                        weight: 10,
-                        weightProgression: 1.25,
-                        sets: [{ reps: 0 }]
-                    }
-                ]
-            });
-            plan.addToPlan({
-                name: "Training B",
-                order: 1,
-                exersises: [
-                    {
-                        name: "Squat",
-                        maxReps: 5,
-                        weight: 10,
-                        weightProgression: 1.25,
-                        sets: [{ reps: 0 }]
-                    }
-                ]
-            });
+            plan.addToPlan(trainingA);
+            plan.addToPlan(trainingB);
         }
     },
     data() {
