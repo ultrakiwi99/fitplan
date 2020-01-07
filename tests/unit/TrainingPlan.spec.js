@@ -126,23 +126,41 @@ describe("TrainingPlan", () => {
     });
 
     it("Returns trainig next by order training with ajusted weight", () => {
-        let nextTraining;
-
         plan.addToPlan(trainingA);
         plan.addToPlan(trainingB);
 
         plan.saveTraining(trainingA);
         plan.saveTraining(trainingB);
 
-        nextTraining = plan.nextTraining();
-        expect(nextTraining.name).toBe("Training A");
+        const enoughRepsA = plan.nextTraining();
+        expect(enoughRepsA.name).toBe("Training A");
+        enoughRepsA.exersises[0].sets[0].reps = 5;
+        plan.saveTraining(enoughRepsA);
 
-        plan.saveTraining(trainingA);
-        nextTraining = plan.nextTraining();
-        expect(nextTraining.name).toBe("Training B");
+        const enoughRepsB = plan.nextTraining();
+        expect(enoughRepsB.name).toBe("Training B");
+        enoughRepsB.exersises[0].sets[0].reps = 5;
+        plan.saveTraining(enoughRepsB);
 
-        plan.saveTraining(trainingB);
-        nextTraining = plan.nextTraining();
-        expect(nextTraining.name).toBe("Training A");
+        const notEnoughRepsA = plan.nextTraining();
+        expect(notEnoughRepsA.name).toBe("Training A");
+        expect(notEnoughRepsA.exersises[0].weight).toBe(11.25);
+        expect(notEnoughRepsA.exersises[0].sets[0].reps).toBe(0);
+        notEnoughRepsA.exersises[0].sets[0].reps = 3;
+        plan.saveTraining(notEnoughRepsA);
+
+        const notEnoughRepsB = plan.nextTraining();
+        expect(notEnoughRepsB.name).toBe("Training B");
+        expect(notEnoughRepsB.exersises[0].weight).toBe(11.25);
+        expect(notEnoughRepsB.exersises[0].sets[0].reps).toBe(0);
+        notEnoughRepsB.exersises[0].sets[0].reps = 3;
+        plan.saveTraining(notEnoughRepsB);
+
+        const nextA = plan.nextTraining();
+        expect(nextA.name).toBe("Training A");
+        plan.saveTraining(nextA);
+
+        const nextB = plan.nextTraining();
+        expect(nextB.name).toBe("Training B");
     });
 });
