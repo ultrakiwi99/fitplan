@@ -1,6 +1,11 @@
 <template>
     <div class="exersise-container">
-        <h3 class="exercise-name">{{ ex.name }}</h3>
+        <div class="exersise-info">
+            <h2 class="exercise-name">{{ ex.name }}</h2>
+            <div class="exersise-details">
+                <strong>{{ ex.weight }} кг</strong> x {{ ex.maxReps }}
+            </div>
+        </div>
         <div class="buttons-container">
             <SetView
                 v-for="(set, idx) in ex.sets"
@@ -37,8 +42,14 @@ export default {
 <style>
 .exersise-container {
     background-color: #f1efec;
-    padding: 0.1rem 0;
+    padding: 0.1rem 0.1rem;
     margin-bottom: 1rem;
+}
+.exersise-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.5rem;
 }
 .buttons-container {
     display: flex;
