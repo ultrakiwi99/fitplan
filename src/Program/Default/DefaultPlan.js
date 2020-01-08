@@ -6,35 +6,35 @@ export const trainingA = {
             name: "Жим ногами.",
             maxReps: 12,
             weight: 40,
-            weightProgression: 1.25,
+            weightProgression: 2.5,
             sets: [{ reps: 0 }, { reps: 0 }, { reps: 0 }, { reps: 0 }]
         },
         {
             name: "Тяга сверху.",
             maxReps: 15,
             weight: 10,
-            weightProgression: 1.25,
+            weightProgression: 2.5,
             sets: [{ reps: 0 }, { reps: 0 }, { reps: 0 }, { reps: 0 }]
         },
         {
             name: "Жим от груди в тренажере.",
             maxReps: 12,
             weight: 10,
-            weightProgression: 1.25,
+            weightProgression: 2.5,
             sets: [{ reps: 0 }, { reps: 0 }, { reps: 0 }, { reps: 0 }]
         },
         {
             name: "Сгибание рук на бицепс.",
             maxReps: 12,
             weight: 10,
-            weightProgression: 1.25,
+            weightProgression: 2.5,
             sets: [{ reps: 0 }, { reps: 0 }, { reps: 0 }, { reps: 0 }]
         },
         {
             name: "Разгибание рук на трицепс.",
             maxReps: 12,
             weight: 10,
-            weightProgression: 1.25,
+            weightProgression: 2.5,
             sets: [{ reps: 0 }, { reps: 0 }, { reps: 0 }, { reps: 0 }]
         },
         {

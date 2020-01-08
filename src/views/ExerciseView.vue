@@ -43,7 +43,9 @@ export default {
 .exersise-container {
     background-color: #f1efec;
     padding: 0.1rem 0.1rem;
+    margin: 0 auto;
     margin-bottom: 1rem;
+    max-width: 375px;
 }
 .exersise-info {
     display: flex;
@@ -59,7 +61,7 @@ export default {
 }
 .buttons-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     margin-bottom: 1rem;
 }

@@ -28,11 +28,11 @@ export default {
     background-color: brown;
     color: white;
     border: 1px solid brown;
-    font-size: 1rem;
-    line-height: 1.1rem;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 1rem;
+    font-size: 2rem;
+    line-height: 2.1rem;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 2rem;
     margin: 0.2rem;
 }
 </style>
