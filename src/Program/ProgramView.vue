@@ -1,11 +1,11 @@
 <template>
     <div>
         <button class="start-button" v-if="training === null" @click="next">
-            Start
+            Начать
         </button>
         <div v-else>
             <TrainingView :training="training" />
-            <button class="save-button" @click="save">Finish</button>
+            <button class="save-button" @click="save">Закончить</button>
         </div>
     </div>
 </template>
@@ -13,7 +13,7 @@
 <script>
 import TrainingView from "../views/TrainingView";
 import TrainingPlan from "../Training/TrainingPlan";
-import { trainingA, trainingB } from "../Program/Default/DefaultPlan";
+import { trainingA } from "../Program/Default/DefaultPlan";
 
 const plan = new TrainingPlan();
 
@@ -23,7 +23,6 @@ export default {
     created() {
         if (plan.getPlan().trainings.length === 0) {
             plan.addToPlan(trainingA);
-            plan.addToPlan(trainingB);
         }
     },
     data() {
