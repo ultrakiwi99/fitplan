@@ -1,11 +1,13 @@
 <template>
     <div>
-        <button class="start-button" v-if="training === null" @click="next">
-            Начать
-        </button>
+        <div class="start-container" v-if="training === null">
+            <button class="std-button" @click="next">
+                Начать
+            </button>
+        </div>
         <div v-else>
             <TrainingView :training="training" />
-            <button class="save-button" @click="save">Закончить</button>
+            <button class="std-button" @click="save">Закончить</button>
         </div>
     </div>
 </template>
@@ -42,4 +44,20 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.start-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.std-button {
+    background-color: #2c3e50;
+    color: white;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid #2c3e50;
+    border-radius: 0.2rem;
+}
+</style>

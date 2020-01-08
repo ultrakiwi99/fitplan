@@ -1,7 +1,7 @@
 <template>
     <div class="exersise-container">
         <div class="exersise-info">
-            <h2 class="exercise-name">{{ ex.name }}</h2>
+            <h2 class="exersise-name">{{ ex.name }}</h2>
             <div class="exersise-details">
                 <strong>{{ ex.weight }} кг</strong> x {{ ex.maxReps }}
             </div>
@@ -50,6 +50,12 @@ export default {
     justify-content: space-between;
     align-items: center;
     padding: 0 0.5rem;
+}
+.exersise-name {
+    text-align: left;
+}
+.exersise-details {
+    min-width: 6rem;
 }
 .buttons-container {
     display: flex;
