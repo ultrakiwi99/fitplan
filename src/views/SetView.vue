@@ -30,7 +30,8 @@ export default {
     border: 1px solid brown;
     font-size: 1rem;
     line-height: 1.1rem;
-    padding: 0.3rem 0.5rem;
+    width: 2rem;
+    height: 2rem;
     border-radius: 1rem;
     margin: 0.2rem;
 }
