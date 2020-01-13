@@ -2,7 +2,7 @@ import { shallowMount } from "@vue/test-utils";
 import ProgramView from "../../src/Program/ProgramView";
 import TrainingView from "../../src/views/TrainingView.vue";
 
-describe("Training Program", () => {
+describe("Program View", () => {
     const wrapper = shallowMount(ProgramView, {
         data() {
             return {

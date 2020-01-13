@@ -27,7 +27,7 @@ describe("ExerciseView", () => {
         expect(wrapper).toMatchSnapshot();
     });
     it("shows exercise name", () => {
-        expect(wrapper.find(".exercise-name").text()).toBe("Test Exercise");
+        expect(wrapper.find(".exersise-name").text()).toBe("Test Exercise");
     });
     it("shows reps", () => {
         expect(wrapper.findAll(SetView).length).toBe(2);

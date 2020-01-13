@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="start-container" v-if="training === null">
-            <button class="std-button" @click="next">
+            <button class="std-button start-button" @click="next">
                 Начать
             </button>
         </div>
