@@ -7,6 +7,7 @@
             :ex="ex"
             :ex-idx="idx"
             @updateEx="updateTraining"
+            @updateExWeight="updateExWeight"
         />
     </div>
 </template>
@@ -29,6 +30,9 @@ export default {
             } else {
                 this.training.exersises[exIdx].sets[setIdx].reps = reps;
             }
+        },
+        updateExWeight(exIdx, weight) {
+            this.training.exersises[exIdx].weight = weight;
         }
     }
 };

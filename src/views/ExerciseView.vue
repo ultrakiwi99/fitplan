@@ -12,7 +12,12 @@
                 <strong>{{ ex.weight }} кг</strong> x {{ ex.maxReps }}
             </div>
         </div>
-        <ExerciseChangeWeight v-if="weightSetMode" />
+        <ExerciseChangeWeight
+            v-if="weightSetMode"
+            :weight="ex.weight"
+            :progression="ex.weightProgression"
+            @updateWeight="changeWeight"
+        />
         <div class="buttons-container">
             <SetView
                 v-for="(set, idx) in ex.sets"
@@ -47,6 +52,10 @@ export default {
     methods: {
         updateEx(setIdx, reps) {
             this.$emit("updateEx", this.exIdx, setIdx, reps);
+        },
+        changeWeight(weight) {
+            this.weightSetMode = false;
+            this.$emit("updateExWeight", this.exIdx, weight);
         }
     }
 };

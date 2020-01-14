@@ -55,4 +55,10 @@ describe("ExerciseChangeWeight component", () => {
         less.trigger("click");
         expect(current.text()).toBe("0");
     });
+
+    it("Saves updated weight.", () => {
+        const save = wrapper.find(".save-weight");
+        save.trigger("click");
+        expect(wrapper.emitted("updateWeight")[0][0]).toBe(0);
+    });
 });

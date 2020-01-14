@@ -3,6 +3,12 @@
         <button class="less-weight" @click="decrease">-</button>
         <span class="weight">{{ modifiedWeight }}</span>
         <button class="more-weight" @click="increase">+</button>
+        <button
+            class="save-weight"
+            @click="$emit('updateWeight', modifiedWeight)"
+        >
+            Ok
+        </button>
     </div>
 </template>
 
