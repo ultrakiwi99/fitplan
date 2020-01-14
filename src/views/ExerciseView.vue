@@ -1,11 +1,18 @@
 <template>
     <div class="exersise-container">
         <div class="exersise-info">
-            <h2 class="exersise-name">{{ ex.name }}</h2>
+            <h3 class="exersise-name">{{ ex.name }}</h3>
             <div class="exersise-details">
+                <span
+                    class="weight-set"
+                    @click="weightSetMode = !weightSetMode"
+                >
+                    &#9881;&nbsp;
+                </span>
                 <strong>{{ ex.weight }} кг</strong> x {{ ex.maxReps }}
             </div>
         </div>
+        <ExerciseChangeWeight v-if="weightSetMode" />
         <div class="buttons-container">
             <SetView
                 v-for="(set, idx) in ex.sets"
@@ -21,15 +28,21 @@
 
 <script>
 import SetView from "./SetView";
+import ExerciseChangeWeight from "./ExerciseChangeWeight";
 
 export default {
     name: "ExerciseView",
-    components: { SetView },
+    components: { SetView, ExerciseChangeWeight },
     props: {
         ex: {
             type: Object
         },
         exIdx: Number
+    },
+    data() {
+        return {
+            weightSetMode: false
+        };
     },
     methods: {
         updateEx(setIdx, reps) {
@@ -64,5 +77,8 @@ export default {
     justify-content: space-around;
     align-items: center;
     margin-bottom: 1rem;
+}
+.weight-set {
+    cursor: pointer;
 }
 </style>

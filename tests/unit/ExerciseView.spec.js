@@ -1,10 +1,16 @@
 import { shallowMount } from "@vue/test-utils";
-import ExerciseView from "../../src/views/ExerciseView.vue";
+import ExerciseView from "../../src/views/ExerciseView";
 import SetView from "../../src/views/SetView";
+import ExerciseChangeWeight from "../../src/views/ExerciseChangeWeight";
 
 describe("ExerciseView", () => {
     // assign
     const wrapper = shallowMount(ExerciseView, {
+        data() {
+            return {
+                weightSetMode: false
+            };
+        },
         propsData: {
             ex: {
                 name: "Test Exercise",
@@ -23,13 +29,26 @@ describe("ExerciseView", () => {
     });
 
     // assert
-    it("renders", () => {
+    it("Renders correctly.", () => {
         expect(wrapper).toMatchSnapshot();
     });
-    it("shows exercise name", () => {
+
+    it("Shows exercise name.", () => {
         expect(wrapper.find(".exersise-name").text()).toBe("Test Exercise");
     });
-    it("shows reps", () => {
+
+    it("Shows reps count.", () => {
         expect(wrapper.findAll(SetView).length).toBe(2);
+    });
+
+    it("Shows weight modification component, when gears icon clicked.", () => {
+        const gears = wrapper.find(".weight-set");
+
+        expect(gears.exists()).toBeTruthy();
+
+        gears.trigger("click");
+
+        expect(wrapper.vm.$data.weightSetMode).toBeTruthy();
+        expect(wrapper.find(ExerciseChangeWeight).exists()).toBeTruthy();
     });
 });
